@@ -1,14 +1,7 @@
 
 var exports = module.exports = {};
-
-const 
-    Client = require('node-rest-client').Client;
-
+var Client = require('node-rest-client').Client;
 var restClient = new Client();
-
-function parseResp(data){
-    
-}
 
 exports.get = function(message){
 
@@ -18,7 +11,7 @@ exports.get = function(message){
         'nani-kore ',
         'heeeeennneeeeee ',
         '(areyoukiddingme) are you kidding me ',
-        '(ohcrap) 7F sucks '
+        '(ohcrap) miss 13F '
     ];
     var randomNumber = Math.floor(Math.random()*textArray.length);
     var args = {
@@ -32,9 +25,6 @@ exports.get = function(message){
     };
 
     restClient.post(URL, args, function (data, res) {
-        // parsed response body as js object 
-        console.log(data);
-        
-        //parseResp(data);
+        console.log(data);
     });
 }

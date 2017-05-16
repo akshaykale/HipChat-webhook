@@ -22,33 +22,9 @@ app.post('/obaa', function (req, res) {
   
     var data =  req.body.item.message;
 
-    console.log(JSON.stringify(data));
-
     translate_obj.translate(data);
-
-    //logger.log("Failed validation. Make sure the validation tokens match.");
-    //res.sendStatus(403);
   
 });  
-
-//POST /gora/hotels
-/*app.get('/gora/hotels', function (req, res) {
-  var cin = req.query.cin; //JSON object with all the request data
-  var cout = req.query.cout;
-  var lat = req.query.lat;// || null;
-  var lng = req.query.lng;
-  //data = JSON.parse(data);
-  //logger.log("REQUEST params: -> "+ JSON.stringify(data));
-  if (cin && cout && lat && lng) {
-    
-    hotels.get(cin, cout, lat, lng, res);
-
-  } else {
-    logger.log("Failed validation. Make sure the validation tokens match.");
-    res.sendStatus(403);
-  }
-});  
-*/
 
 // Tell our app to listen on port 
 app.listen(app.get('port'), function () {
