@@ -1,0 +1,26 @@
+{
+  "name": "hipchat-weebhook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akshaykale/HipChat-webhook.git"
+  },
+  "author": "Akshay Kale | ark.akshaykale@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akshaykale/HipChat-webhook/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "node-rest-client": "^3.1.0",
+    "request": "^2.72.0"
+  },
+  "homepage": "https://github.com/akshaykale/HipChat-webhook#readme"
+}
