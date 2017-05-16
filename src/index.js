@@ -19,11 +19,11 @@ app.set('port', process.env.PORT || 5000);
 //POST /obba
 app.post('/obaa', function (req, res) {
   
-    var data =  req.body.item.message.message;
+    var data =  req.body.item.message;
 
     console.log(JSON.stringify(data));
 
-   // obba_obj.get();
+    obba_obj.get(data);
 
     //logger.log("Failed validation. Make sure the validation tokens match.");
     //res.sendStatus(403);
