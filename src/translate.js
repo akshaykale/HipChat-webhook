@@ -37,14 +37,13 @@ exports.translate = function(message){
     }
 
     var options = {
-        url: 'http://www.transltr.org/api/translate',
+        url: 'http://www.transltr.org/api/translate',   
         method: 'POST',
         body: dataString,
         headers: header
     };
 
     function callback(error, response, body) {
-        console.log(response);
         if (!error && response.statusCode == 200) {
             console.log(body);
             
@@ -58,11 +57,10 @@ exports.translate = function(message){
                 headers: { "Content-Type": "application/json" }
             };
             restClient.post(URL, args, function (data, res) {
-            console.log("ERROR");   
+                console.log(res);   
             });
                     
-        }else   
-        console.log(response);
+        }
     }
 
     request(options, callback);
