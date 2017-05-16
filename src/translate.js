@@ -18,7 +18,7 @@ exports.translate = function(message){
 
 
       var args_trans = {
-        data: {
+        translateRequest: {
             "text": msg,
             "from": "",
             "to": "en"
@@ -32,7 +32,7 @@ exports.translate = function(message){
         // parsed response body as js object
 
     var trans_body = data.body;
-
+    console.log(trans_body);
     var args = {
         data: {
             "color":"green",
