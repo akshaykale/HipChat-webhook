@@ -17,8 +17,41 @@ exports.translate = function(message){
     var URL = "https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token="+process.env.AUTH;
 
 
+      var args_trans = {
+        data: {
+            "text": msg,
+            "from": "",
+            "to": "en"
+            },
+        headers: { "Content-Type": "application/json" }
+      };
 
-  const translate = require('google-translate-api');
+    var translateURL = "http://www.transltr.org/api/translate";
+
+    restClient.post(translateURL, args_trans, function (data, res) {
+        // parsed response body as js object
+
+    var trans_body = data.body;
+
+    var args = {
+        data: {
+            "color":"green",
+            "message":trans_body.translationText,
+            "notify":false,
+            "message_format":"text"
+        },
+        headers: { "Content-Type": "application/json" }
+      };
+        restClient.post(URL, args, function (data, res) {
+        // parsed response body as js object 
+        console.log(data);  
+      });
+
+
+    console.log();  
+    });
+
+ /* //const translate = require('google-translate-api');
 
     translate('Ik spreek Engels', {to: 'en'}).then(res => {
         console.log(res.text);
@@ -42,7 +75,7 @@ exports.translate = function(message){
     }).catch(err => {
         console.error(err);
     });
-
+*/
 /*  // Instantiates a client
   const translate = Translate();
 
