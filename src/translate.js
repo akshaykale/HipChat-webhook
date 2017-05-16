@@ -31,7 +31,7 @@ exports.translate = function(message){
     restClient.post(translateURL, args_trans, function (data_tr, res) {
         // parsed response body as js object
     //var data_tr = JSON.parse(data_t);
-    console.log(JSON.stringify(data_tr));
+    console.log(data_tr);
     
     var trans_body = data_tr.body;
     
