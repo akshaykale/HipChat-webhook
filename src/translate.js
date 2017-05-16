@@ -16,21 +16,10 @@ exports.translate = function(message){
 
     var URL = "https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token="+process.env.AUTH;
 
+    var translateURL = "http://www.transltr.org/api/translate?text="+msg+"&to=en";
 
-      var args_trans = {
-        translateRequest: {
-            "text": msg,
-            "from": "",
-            "to": "en"
-            },
-        headers: { "Content-Type": "application/json" }
-      };
-
-    var translateURL = "http://www.transltr.org/api/translate";
-
-    restClient.post(translateURL, args_trans, function (data_tr, res) {
-        // parsed response body as js object
-    //var data_tr = JSON.parse(data_t);
+    restClient.get(translateURL, function (data_tr, res) {
+    
     console.log(data_tr);
     
     var trans_body = data_tr.body;
