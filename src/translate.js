@@ -28,11 +28,13 @@ exports.translate = function(message){
 
     var translateURL = "http://www.transltr.org/api/translate";
 
-    restClient.post(translateURL, args_trans, function (data, res) {
+    restClient.post(translateURL, args_trans, function (data_t, res) {
         // parsed response body as js object
-
-    var trans_body = data.body;
-    console.log(trans_body);
+    var data_tr = JSON.parse(data_t);
+    var trans_body = data_tr.body;
+    console.log(JSON.stringify(data_tr));
+    trans_body = JSON.parse(trans_body);
+    console.log(JSON.stringify(trans_body));
     var args = {
         data: {
             "color":"green",
