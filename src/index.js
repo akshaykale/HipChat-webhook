@@ -23,7 +23,7 @@ app.post('/obaa', function (req, res) {
 
     console.log(JSON.stringify(data));
 
-    obba_obj.get(data);
+    obba_obj.translate(data);
 
     //logger.log("Failed validation. Make sure the validation tokens match.");
     //res.sendStatus(403);
