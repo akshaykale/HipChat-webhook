@@ -7,7 +7,7 @@ exports.translate = function(message){
 
   var msg = message.message;
   msg = msg.substring(4,msg.length);
-
+  console.log(msg);
   var URL = "https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token="+process.env.AUTH;
   var translateURL = "http://www.transltr.org/api/translate?text="+encodeURI(msg)+"&to=en";
 
@@ -44,10 +44,10 @@ exports.translate = function(message){
     };
 
     function callback(error, response, body) {
+        console.log(response);
         if (!error && response.statusCode == 200) {
-            console.log(body.translationText);
-            restClient.get(translateURL, function (data_tr, res) {
-    
+            console.log(body);
+            
             var args = {
                 data: {
                     "color":"green",
@@ -58,9 +58,9 @@ exports.translate = function(message){
                 headers: { "Content-Type": "application/json" }
             };
             restClient.post(URL, args, function (data, res) {
-              });
-                    console.log("ERROR");  
+            console.log("ERROR");   
             });
+                    
         }else   
         console.log(response);
     }
