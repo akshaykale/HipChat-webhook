@@ -47,7 +47,7 @@ exports.translate = function(message){
         if (!error && response.statusCode == 200) {
             console.log(body);
 
-            var stst = `{"color":"green","message":"${body.translationText}","notify":false,"message_format":"text"}`;
+            var stst = `{"color":"green","message":"${JSON.parse(body).translationText}","notify":false,"message_format":"text"}`;
             var opt = {
                 url: 'https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token='+process.env.AUTH,
                 method: 'POST',
