@@ -5,6 +5,7 @@ const
   https = require('https'),
   request = require('request'),
   obba_obj = require("./obba.js"),
+  translate_obj = require("./translate.js"),
 
 // Create a new instance of express
  app = express();
@@ -23,7 +24,7 @@ app.post('/obaa', function (req, res) {
 
     console.log(JSON.stringify(data));
 
-    obba_obj.translate(data);
+    translate_obj.translate(data);
 
     //logger.log("Failed validation. Make sure the validation tokens match.");
     //res.sendStatus(403);
