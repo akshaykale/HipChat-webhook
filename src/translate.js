@@ -46,25 +46,28 @@ exports.translate = function(message){
     function callback(error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log(body);
-            
-            var args = {
-                data: {
-                    "color":"green",
-                    "message":body.translationText,
-                    "notify":false,
-                    "message_format":"text"
-                },
-                headers: { "Content-Type": "application/json" }
-            };
-            restClient.post(URL, args, function (data, res) {
-                console.log(res);   
-            });
-                    
+
+            var stst = `{"color":"green","message":"${body.translationText}","notify":false,"message_format":"text"}`;
+            var opt = {
+                url: 'https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token='+process.env.AUTH,
+                method: 'POST',
+                headers: header,
+                body: stst
+            };  
+            request(opt, _callback);
+
         }
     }
 
     request(options, callback);
 
+function _callback(error, response, body) {
+    if (!error && response.statusCode == 200) {
+        console.log(body);
+    }else{
+        console.log(error);
+    }
+}
 
 
 
