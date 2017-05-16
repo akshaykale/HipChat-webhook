@@ -13,26 +13,19 @@ exports.translate = function(message){
 
   var msg = message.message;
   msg = msg.substring(4,msg.length);
-
+        console.log(msg);
     var URL = "https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token="+process.env.AUTH;
 
-    var translateURL = "http://www.transltr.org/api/translate?text="+msg+"&to=en";
+    var translateURL = "http://www.transltr.org/api/translate?text="+encodeURI(msg)+"&to=en";
 
     restClient.get(translateURL, function (data_tr, res) {
-    
+    
     console.log(data_tr);
     
-    var trans_body = data_tr.body;
-    
-    console.log(JSON.stringify(trans_body));
-    
-    trans_body = JSON.parse(trans_body);
-
-    console.log(JSON.stringify(trans_body));
     var args = {
         data: {
             "color":"green",
-            "message":trans_body.translationText,
+            "message":data_tr.translationText,
             "notify":false,
             "message_format":"text"
         },
