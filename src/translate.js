@@ -57,6 +57,9 @@ exports.translate = function(message, RoomUrl){
             request(opt, _callback);
 
         }
+        else{
+            console.log("Error")
+        }
     }
 
     request(options, callback);
