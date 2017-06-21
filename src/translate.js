@@ -59,6 +59,14 @@ exports.translate = function(message, RoomUrl){
         }
         else{
             console.log("Error")
+            var stst1 = `{"color":"red","message":"This is not a free translation API\nWe need fund\n","notify":false,"message_format":"text"}`;
+            var opt = {
+                url: RoomUrl,//'https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token='+process.env.AUTH,
+                method: 'POST',
+                headers: header,
+                body: stst1
+            };  
+            request(opt, _callback);
         }
     }
 
