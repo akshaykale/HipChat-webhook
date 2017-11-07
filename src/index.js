@@ -6,6 +6,7 @@ const
   request = require('request'),
   obba_obj = require("./obba.js"),
   translate_obj = require("./translate.js"),
+translate = require('translate-api'),
 
 // Create a new instance of express
  app = express();
@@ -21,9 +22,31 @@ app.set('port', process.env.PORT || 5000);
 app.post('/obaa', function (req, res) {
   
     var data =  req.body.item.message;
+    console.log(data);
+    var msg = data.message;
+    console.log(msg);
+    msg = msg.substring(4,msg.length);
+    console.log(msg);
 
-    translate_obj.translate(data, 'https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token='+process.env.AUTH_Playing_Room);
-  
+    //translate_obj.translate(data, 'https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token='+process.env.AUTH_Playing_Room);
+
+    let transText = 'こんにちは世界';
+    translate.getText(msg,{to: 'en'}).then(function(text){
+      console.log(text)
+      var res = JSON.parse(text);
+      console.log(res.text);
+      var header = {
+      'Content-Type': 'application/json'
+      }
+      var stst = `{"color":"green","message":"${res.text}","notify":false,"message_format":"text"}`;
+      var opt = {
+          url: 'https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token='+process.env.AUTH_Playing_Room,
+          method: 'POST',
+          headers: header,
+          body: stst
+      };  
+      request(opt);
+    });  
 });  
 
 //POST /obba
