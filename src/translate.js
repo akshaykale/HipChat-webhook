@@ -8,7 +8,6 @@ exports.translate = function(message, RoomUrl){
   var msg = message.message;
   msg = msg.substring(4,msg.length);
   console.log(msg);
-  //var URL = "https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token="+auth;
   var translateURL = "http://www.transltr.org/api/translate?text="+encodeURI(msg)+"&to=en";
 
 /*  restClient.get(translateURL, function (data_tr, res) {
@@ -49,7 +48,7 @@ exports.translate = function(message, RoomUrl){
 
             var stst = `{"color":"green","message":"${JSON.parse(body).translationText}","notify":false,"message_format":"text"}`;
             var opt = {
-                url: RoomUrl,//'https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token='+process.env.AUTH,
+                url: RoomUrl,
                 method: 'POST',
                 headers: header,
                 body: stst
@@ -61,7 +60,7 @@ exports.translate = function(message, RoomUrl){
             console.log("Error")
             var stst1 = `{"color":"red","message":"This is not a free translation API\nWe need fund\n","notify":false,"message_format":"text"}`;
             var opt = {
-                url: RoomUrl,//'https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token='+process.env.AUTH,
+                url: RoomUrl,
                 method: 'POST',
                 headers: header,
                 body: stst1
