@@ -28,8 +28,6 @@ app.post('/obaa', function (req, res) {
     msg = msg.substring(4,msg.length);
     console.log(msg);
 
-    //translate_obj.translate(data, 'https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token='+process.env.AUTH_Playing_Room);
-
     let transText = 'こんにちは世界';
     translate.getText(msg,{to: 'en'}).then(function(text){
       console.log(text)
@@ -40,7 +38,7 @@ app.post('/obaa', function (req, res) {
       }
       var stst = `{"color":"green","message":"${res.text}","notify":false,"message_format":"text"}`;
       var opt = {
-          url: 'https://rakuten.hipchat.com/v2/room/3414317/notification?auth_token='+process.env.AUTH_Playing_Room,
+          url: process.env.AUTH_Playing_Room,
           method: 'POST',
           headers: header,
           body: stst
@@ -52,10 +50,7 @@ app.post('/obaa', function (req, res) {
 //POST /obba
 app.post('/english_team_tr', function (req, res) {
   
-    var data =  req.body.item.message;
-
-    translate_obj.translate(data, 'https://rakuten.hipchat.com/v2/room/3880987/notification?auth_token='+process.env.AUTH_English_Team);
-  
+    var data =  req.body.item.message;  
 }); 
 
 // Tell our app to listen on port 
