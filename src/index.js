@@ -33,7 +33,7 @@ app.post('/obaa', function (req, res) {
     let transText = 'こんにちは世界';
     translate.getText(msg,{to: 'en'}).then(function(text){
       console.log(text)
-      var res = JSON.parse(text);
+      var res = text;//JSON.parse(text);
       console.log(res.text);
       var header = {
       'Content-Type': 'application/json'
